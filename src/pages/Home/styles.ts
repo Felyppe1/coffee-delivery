@@ -22,6 +22,12 @@ export const Section1 = styled.section`
             width: initial;
         }
     }
+
+    @media screen and (max-width: 600px) {
+        img {
+            width: 98%;
+        }
+    }
 `
 
 export const Section1Container1 = styled.div`
@@ -83,5 +89,11 @@ export const Section2 = styled.section`
         font-family: "Baloo 2", cursive;
         font-size: 2rem;
         font-weight: 800;
+    }
+
+    & > div {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(256px, 1fr));
+        gap: 2.5rem 2rem;
     }
 `

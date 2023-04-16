@@ -2,17 +2,31 @@ import { AddToCartContainer, ProductContainer } from "./styles";
 import coffeeImg from '../../../../assets/coffees/expresso.svg'
 import { Plus, Minus, ShoppingCartSimple } from 'phosphor-react'
 
-export function SingleProduct() {
+
+interface SingleProductProps {
+    id: string
+    name: string
+    image: string
+    tags: string[]
+    description: string
+    price: string
+}
+
+export function SingleProduct({id, name, image, tags, description, price}: SingleProductProps) {
     return (
         <ProductContainer>
             <img src={coffeeImg} alt="" />
             <div>
-                <p>Tradicional</p>
+                {tags.map(tag => {
+                    return (
+                        <p>{tag}</p>
+                    )
+                })}
             </div>
-            <p>Expresso Tradicional</p>
-            <p>O tradicional café feito com água quente e café moído</p>
+            <p>{name}</p>
+            <p>{description}</p>
             <AddToCartContainer>
-                <p>R$ <span>9,90</span></p>
+                <p>R$ <span>{price}</span></p>
                 <div>
                     <div>
                         <Minus size={16}/>
