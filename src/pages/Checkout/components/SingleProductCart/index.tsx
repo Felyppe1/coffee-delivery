@@ -2,24 +2,39 @@ import { Minus, Plus, Trash } from "phosphor-react";
 import { ProductQuantity } from "../../../../components/ProductQuantity";
 import CoffeeImg from "../../../../assets/coffees/expresso.svg"
 import { ProductButtonsDiv, SingleProductCartDiv } from "./styles";
+import { useContext } from "react";
+import { ProductsContext } from "../../../../contexts/ProductsContext";
 
-export function SingleProductCart() {
+interface SingleProductCartProps {
+    id: string
+    name: string
+    image: string
+    price: string
+}
+
+export function SingleProductCart({id, name, image, price}: SingleProductCartProps) {
+    const { setCartProduct } = useContext(ProductsContext)
+
+    function handleDeleteProductFromCart(id: string) {
+        console.log(id)  //USAR useReducer
+    }
+
     return (
         <SingleProductCartDiv>
             <div>
                 <img src={CoffeeImg} alt="" />
                 <ProductButtonsDiv>
-                    <p>Expresso Tradicional</p>
+                    <p>{name}</p>
                     <div>
                         <ProductQuantity />
-                        <button>
+                        <button onClick={() => handleDeleteProductFromCart(id)}>
                             <Trash size={16} />
                             <p>REMOVER</p>
                         </button>
                     </div>
                 </ProductButtonsDiv>
             </div>
-            <p>R$ 9,90</p>
+            <p>R$ {price}</p>
         </SingleProductCartDiv>
     )
 }
