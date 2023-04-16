@@ -11,14 +11,14 @@ export function Home() {
             image: "",
             tags: ["Tradicional"],
             description: "O tradicional café feito com água quente e grãos moídos",
-            price: "9,90"
+            price: "9,00"
         },
         {
             name: "Expresso Americano",
             image: "",
             tags: ["Tradicional"],
             description: "Expresso diluído, menos intenso que o tradicional",
-            price: "9,90"
+            price: "8,00"
         },
         {
             name: "Expresso Cremoso",
@@ -32,21 +32,21 @@ export function Home() {
             image: "",
             tags: ["Tradicional", "Gelado"],
             description: "Bebida preparada com café expresso e cubos de gelo",
-            price: "9,90"
+            price: "10,50"
         },
         {
             name: "Café com Leite",
             image: "",
             tags: ["Tradicional", "Com Leite"],
             description: "Meio a meio de expresso tradicional com leite vaporizado",
-            price: "9,90"
+            price: "9,50"
         },
         {
             name: "Latte",
             image: "",
             tags: ["Tradicional", "Com Leite"],
             description: "Uma dose de café expresso com o dobro de leite e espuma cremosa",
-            price: "9,90"
+            price: "11,00"
         },
         {
             name: "Capuccino",
@@ -74,21 +74,21 @@ export function Home() {
             image: "",
             tags: ["Especial", "Com Leite"],
             description: "Bebida feita com chocolate dissolvido no leite quente e café",
-            price: "9,90"
+            price: "12,00"
         },
         {
             name: "Cubano",
             image: "",
             tags: ["Especial", "Alcoólico", "Gelado"],
             description: "Drink gelado de café expresso com rum, creme de leite e hortelã",
-            price: "9,90"
+            price: "11,90"
         },
         {
             name: "Havaiano",
             image: "",
             tags: ["Especial"],
             description: "Bebida adocicada preparada com café e leite de coco",
-            price: "9,90"
+            price: "11,50"
         },
         {
             name: "Árabe",
@@ -102,7 +102,7 @@ export function Home() {
             image: "",
             tags: ["Especial", "Alcoólico"],
             description: "Bebida a base de café, uísque irlandês, açúcar e chantilly",
-            price: "9,90"
+            price: "13,00"
         }
     ]
 

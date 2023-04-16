@@ -1,6 +1,7 @@
 import { AddToCartContainer, ProductContainer } from "./styles";
 import coffeeImg from '../../../../assets/coffees/expresso.svg'
 import { Plus, Minus, ShoppingCartSimple } from 'phosphor-react'
+import { ProductQuantity } from "../../../../components/ProductQuantity";
 
 
 interface SingleProductProps {
@@ -28,11 +29,12 @@ export function SingleProduct({id, name, image, tags, description, price}: Singl
             <AddToCartContainer>
                 <p>R$ <span>{price}</span></p>
                 <div>
-                    <div>
+                    {/* <div>
                         <Minus size={16}/>
                         <p>1</p>
                         <Plus size={16}/>
-                    </div>
+                    </div> */}
+                    <ProductQuantity />
                     <button>
                         <ShoppingCartSimple size={18} weight="fill" />
                     </button>

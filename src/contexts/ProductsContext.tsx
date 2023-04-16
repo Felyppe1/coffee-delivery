@@ -12,7 +12,7 @@ export function ProductsContext() {
             image: "",
             tags: ["Tradicional"],
             description: "Expresso diluído, menos intenso que o tradicional",
-            price: "9,90"
+            price: "8,00"
         },
         {
             name: "Expresso Cremoso",
@@ -26,21 +26,21 @@ export function ProductsContext() {
             image: "",
             tags: ["Tradicional", "Gelado"],
             description: "Bebida preparada com café expresso e cubos de gelo",
-            price: "9,90"
+            price: "10,90"
         },
         {
             name: "Café com Leite",
             image: "",
             tags: ["Tradicional", "Com Leite"],
             description: "Meio a meio de expresso tradicional com leite vaporizado",
-            price: "9,90"
+            price: "9,00"
         },
         {
             name: "Latte",
             image: "",
             tags: ["Tradicional", "Com Leite"],
             description: "Uma dose de café expresso com o dobro de leite e espuma cremosa",
-            price: "9,90"
+            price: "11,00"
         },
         {
             name: "Capuccino",
@@ -68,7 +68,7 @@ export function ProductsContext() {
             image: "",
             tags: ["Especial", "Com Leite"],
             description: "Bebida feita com chocolate dissolvido no leite quente e café",
-            price: "9,90"
+            price: "12,00"
         },
         {
             name: "Cubano",
@@ -96,7 +96,7 @@ export function ProductsContext() {
             image: "",
             tags: ["Especial", "Alcoólico"],
             description: "Bebida a base de café, uísque irlandês, açúcar e chantilly",
-            price: "9,90"
+            price: "13,00"
         }
     ]
     return (
