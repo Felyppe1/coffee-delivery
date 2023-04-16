@@ -1,5 +1,12 @@
+import { BuyerInfos } from "./components/BuyerInfos";
+import { Cart } from "./components/Cart";
+import { CheckoutContainer } from "./styles";
+
 export function Checkout() {
     return (
-        <h1>Checkout</h1>
+        <CheckoutContainer>
+            <BuyerInfos />
+            <Cart />
+        </CheckoutContainer>
     )
 }
