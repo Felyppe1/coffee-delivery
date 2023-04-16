@@ -67,7 +67,7 @@ export const AddToCartContainer = styled.div`
         display: flex;
         gap: .6rem;
 
-        & > div:first-child {
+        /* & > div:first-child {
             background-color: ${props => props.theme.baseButton};
             display: flex;
             align-items: center;
@@ -77,14 +77,25 @@ export const AddToCartContainer = styled.div`
 
             svg {
                 color: ${props => props.theme.purpleDark};
+                cursor: pointer;
+
+                &:hover {
+                    color: ${props => props.theme.purple};
+                }
             }
-        }
+        } */
 
         button {
             background-color: ${props => props.theme.purpleDark};
             color: ${props => props.theme.background};
             border-radius: 6px;
             padding: .5rem;
+            cursor: pointer;
+            transition: background-color .1s;
+
+            &:hover {
+                background-color: ${props => props.theme.purple};
+            }
 
             svg {
                 vertical-align: middle;
