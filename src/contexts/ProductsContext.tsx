@@ -1,6 +1,51 @@
-export function ProductsContext() {
+import { ReactNode, createContext, useState } from 'react'
+import {v4 as uuidv4} from 'uuid'
+
+interface Product {
+    id: string;
+    name: string;
+    image: string;
+    tags: string[];
+    description: string;
+    price: string;
+}
+interface CartProduct {
+    id: string
+    name: string
+    image: string
+    price: string
+}
+interface ProductsContextProps {
+    productsList: Product[]
+    cartList: CartProduct[]
+    setCartProduct: (id: string, name: string, image: string, price: string) => void
+}
+export const ProductsContext = createContext({} as ProductsContextProps)
+
+
+
+/* interface CartContextProps {
+    cartList: CartProduct[]
+}
+export const CartContext = createContext({
+    cartList: []
+} as CartContextProps) */
+
+
+interface ProductsContextProviderProps {
+    children: ReactNode
+}
+
+export function ProductsContextProvider({ children }: ProductsContextProviderProps) {
+    const [ cartList, setCartList ] = useState<CartProduct[]>([])  //Tipagem da variável do Estado
+
+    function setCartProduct(id: string, name: string, image: string, price: string) {
+        setCartList([...cartList, {id, name, image, price}])
+    }
+
     const productsList = [
         {
+            id: uuidv4(),
             name: "Expresso Tradicional",
             image: "",
             tags: ["Tradicional"],
@@ -8,6 +53,7 @@ export function ProductsContext() {
             price: "9,90"
         },
         {
+            id: uuidv4(),
             name: "Expresso Americano",
             image: "",
             tags: ["Tradicional"],
@@ -15,6 +61,7 @@ export function ProductsContext() {
             price: "8,00"
         },
         {
+            id: uuidv4(),
             name: "Expresso Cremoso",
             image: "",
             tags: ["Tradicional"],
@@ -22,6 +69,7 @@ export function ProductsContext() {
             price: "9,90"
         },
         {
+            id: uuidv4(),
             name: "Expresso Gelado",
             image: "",
             tags: ["Tradicional", "Gelado"],
@@ -29,6 +77,7 @@ export function ProductsContext() {
             price: "10,90"
         },
         {
+            id: uuidv4(),
             name: "Café com Leite",
             image: "",
             tags: ["Tradicional", "Com Leite"],
@@ -36,6 +85,7 @@ export function ProductsContext() {
             price: "9,00"
         },
         {
+            id: uuidv4(),
             name: "Latte",
             image: "",
             tags: ["Tradicional", "Com Leite"],
@@ -43,6 +93,7 @@ export function ProductsContext() {
             price: "11,00"
         },
         {
+            id: uuidv4(),
             name: "Capuccino",
             image: "",
             tags: ["Tradicional", "Com Leite"],
@@ -50,6 +101,7 @@ export function ProductsContext() {
             price: "9,90"
         },
         {
+            id: uuidv4(),
             name: "Macchiato",
             image: "",
             tags: ["Tradicional", "Com Leite"],
@@ -57,6 +109,7 @@ export function ProductsContext() {
             price: "9,90"
         },
         {
+            id: uuidv4(),
             name: "Mocaccino",
             image: "",
             tags: ["Tradicional", "Com Leite"],
@@ -64,6 +117,7 @@ export function ProductsContext() {
             price: "9,90"
         },
         {
+            id: uuidv4(),
             name: "Chocolate Quente",
             image: "",
             tags: ["Especial", "Com Leite"],
@@ -71,6 +125,7 @@ export function ProductsContext() {
             price: "12,00"
         },
         {
+            id: uuidv4(),
             name: "Cubano",
             image: "",
             tags: ["Especial", "Alcoólico", "Gelado"],
@@ -78,6 +133,7 @@ export function ProductsContext() {
             price: "9,90"
         },
         {
+            id: uuidv4(),
             name: "Havaiano",
             image: "",
             tags: ["Especial"],
@@ -85,6 +141,7 @@ export function ProductsContext() {
             price: "9,90"
         },
         {
+            id: uuidv4(),
             name: "Árabe",
             image: "",
             tags: ["Especial"],
@@ -92,6 +149,7 @@ export function ProductsContext() {
             price: "9,90"
         },
         {
+            id: uuidv4(),
             name: "Irlandês",
             image: "",
             tags: ["Especial", "Alcoólico"],
@@ -99,7 +157,16 @@ export function ProductsContext() {
             price: "13,00"
         }
     ]
+
     return (
-        <h1>Contexto</h1>
+        <ProductsContext.Provider 
+            value={{ 
+                productsList,
+                cartList,
+                setCartProduct
+            }}
+        >
+            {children}
+        </ProductsContext.Provider>
     )
 }

@@ -1,13 +1,25 @@
+import { useContext } from "react";
 import { SingleProductCart } from "../SingleProductCart";
 import { CartContainer, ConfirmButton, PricesDiv } from "./styles";
+import { ProductsContext } from "../../../../contexts/ProductsContext";
 
 export function Cart() {
+    const { cartList } = useContext(ProductsContext) 
+
     return (
         <CartContainer>
             <p>Cafés selecionados</p>
             <div>
-                <SingleProductCart />
-                <SingleProductCart />
+                {cartList.map(product => {
+                    return (
+                        <SingleProductCart 
+                            id={product.id}
+                            name={product.name}
+                            image={product.image}
+                            price={product.price}
+                        />
+                    )
+                })}
                 <PricesDiv>
                     <div>
                         <p>Total de itens</p>
