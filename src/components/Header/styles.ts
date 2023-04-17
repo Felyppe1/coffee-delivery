@@ -14,7 +14,7 @@ export const RightNavDiv = styled.div`
     align-items: center;
     gap: .75rem;
 
-    div {
+    & > div:first-child {
         background-color: ${props => props.theme.purpleLight};
         color: ${props => props.theme.purpleDark};
         display: flex;
@@ -25,13 +25,37 @@ export const RightNavDiv = styled.div`
     }
 
     a {
-        background-color: ${props => props.theme.yellowLight};
-        color: ${props => props.theme.yellowDark};
-        padding: .5rem;
-        border-radius: .375rem;
+        & > div {
+            background-color: ${props => props.theme.yellowLight};
+            color: ${props => props.theme.yellowDark};
+            padding: .5rem;
+            border-radius: .375rem;
+            position: relative;
 
-        svg {
-            vertical-align: middle;
+            svg {
+                vertical-align: middle;
+            }
+
+            p {
+                background-color: ${props => props.theme.yellowDark};
+                color: ${props => props.theme.background};
+                position: absolute;
+                top: 0px;
+                right: 0px;
+                transform: translate(50%, -50%);
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: .75rem;
+                font-weight: 700;
+            }
         }
+
+        
+
+        
     }
 `

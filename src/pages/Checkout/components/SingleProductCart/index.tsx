@@ -10,31 +10,27 @@ interface SingleProductCartProps {
     name: string
     image: string
     price: string
+    quantity: number
 }
 
-export function SingleProductCart({id, name, image, price}: SingleProductCartProps) {
-    const { setCartProduct } = useContext(ProductsContext)
-
-    function handleDeleteProductFromCart(id: string) {
-        console.log(id)  //USAR useReducer
-    }
+export function SingleProductCart() {
 
     return (
         <SingleProductCartDiv>
             <div>
                 <img src={CoffeeImg} alt="" />
                 <ProductButtonsDiv>
-                    <p>{name}</p>
+                    <p>{/* {name} */}Nome</p>
                     <div>
                         <ProductQuantity />
-                        <button onClick={() => handleDeleteProductFromCart(id)}>
+                        <button /* onClick={() => deleteCartProduct(id)} */>
                             <Trash size={16} />
                             <p>REMOVER</p>
                         </button>
                     </div>
                 </ProductButtonsDiv>
             </div>
-            <p>R$ {price}</p>
+            <p>R$ {/* {price} */}9,90</p>
         </SingleProductCartDiv>
     )
 }

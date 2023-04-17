@@ -2,6 +2,8 @@ import { HeaderContainer, RightNavDiv } from "./styles";
 import Logo from "../../assets/logo.svg"
 import { NavLink } from 'react-router-dom'
 import { ShoppingCart, MapPin } from 'phosphor-react'
+import { useContext } from "react";
+import { ProductsContext } from "../../contexts/ProductsContext";
 
 export function Header() {
     return (
@@ -16,7 +18,10 @@ export function Header() {
                         <p>Niterói, RJ</p>
                     </div>
                     <NavLink to='/checkout' title='Checkout'>
-                        <ShoppingCart size={22} weight="fill"/>
+                        <div>
+                            <ShoppingCart size={22} weight="fill" />
+                            <p>{/* {totalProductsInCart} */}1</p>
+                        </div>
                     </NavLink>
                 </RightNavDiv>
             </nav>

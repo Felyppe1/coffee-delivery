@@ -48,12 +48,14 @@ export function Home() {
                 {productsList.map(product => {
                     return (
                         <SingleProduct 
-                            id={product.id}
+                            /* id={product.id}
                             name={product.name}
                             image={product.image}
                             tags={product.tags}
                             description={product.description}
                             price={product.price}
+                            isInCart={product.isInCart}
+                            quantity={product.quantity} */
                         />
                     )
                 })}

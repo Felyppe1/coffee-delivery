@@ -52,6 +52,7 @@ export const PricesDiv = styled.div`
 export const ConfirmButton = styled.button`
     background-color: ${props => props.theme.yellow};
     color: ${props => props.theme.background};
+    font-weight: 700;
     padding: .75rem .5rem;
     border-radius: 6px;
     cursor: pointer;
