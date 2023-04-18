@@ -1,26 +1,30 @@
 import { Minus, Plus, Trash } from "phosphor-react";
-import { ProductQuantity } from "../../../../components/ProductQuantity";
-import CoffeeImg from "../../../../assets/coffees/expresso.svg"
+import { ProductQuantity } from "../../../../../../components/ProductQuantity";
+import coffeeImg from "../../../../../../assets/coffees/americano.svg"
 import { ProductButtonsDiv, SingleProductCartDiv } from "./styles";
 import { useContext } from "react";
-import { ProductsContext } from "../../../../contexts/ProductsContext";
+import { ProductsContext, ProductsContextProvider } from "../../../../../../contexts/ProductsContext";
+import { stringify } from "uuid";
 
 interface SingleProductCartProps {
     id: string
     name: string
     image: string
-    price: string
-    quantity: number
+    price: number
+    quantityInCart: number
+    isInCart: boolean
+    priceInCart: number
 }
 
-export function SingleProductCart() {
+export function SingleProductCart({id, name, image, price, quantityInCart, isInCart, priceInCart}: SingleProductCartProps) {
+    const { productsList, formatPrice } = useContext(ProductsContext)
 
     return (
         <SingleProductCartDiv>
             <div>
-                <img src={CoffeeImg} alt="" />
+                <img src={coffeeImg} alt="" />
                 <ProductButtonsDiv>
-                    <p>{/* {name} */}Nome</p>
+                    <p>{name}</p>
                     <div>
                         <ProductQuantity />
                         <button /* onClick={() => deleteCartProduct(id)} */>
@@ -30,7 +34,7 @@ export function SingleProductCart() {
                     </div>
                 </ProductButtonsDiv>
             </div>
-            <p>R$ {/* {price} */}9,90</p>
+            <p>R$ {formatPrice(price)}</p>
         </SingleProductCartDiv>
     )
 }

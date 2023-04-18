@@ -5,6 +5,7 @@ import Teste from '../assets/coffees/americano.svg'
 interface CartInfoProps {
     isInCart: true | false
     quantityInCart: number
+    priceInCart: number
 }
 export interface Product {
     id: string
@@ -16,14 +17,11 @@ export interface Product {
     quantity: number
     cartInfo: CartInfoProps
 }
-export interface CartProduct {
-    id: string
-    name?: string
-    image?: string
-    price?: string
-}
+
 interface ProductsContextProps {
     productsList: Product[]
+    addToCart: (id: string) => void
+    formatPrice: (price: number) => string
 }
 export const ProductsContext = createContext({} as ProductsContextProps)
 
@@ -43,7 +41,8 @@ export function ProductsContextProvider({ children }: ProductsContextProviderPro
             quantity: 1,
             cartInfo: {
                 isInCart: false,
-                quantityInCart: 1
+                quantityInCart: 1,
+                priceInCart: 0
             }
         },
         {
@@ -56,7 +55,8 @@ export function ProductsContextProvider({ children }: ProductsContextProviderPro
             quantity: 1,
             cartInfo: {
                 isInCart: false,
-                quantityInCart: 1
+                quantityInCart: 1,
+                priceInCart: 0
             }
         },
         {
@@ -69,7 +69,8 @@ export function ProductsContextProvider({ children }: ProductsContextProviderPro
             quantity: 1,
             cartInfo: {
                 isInCart: false,
-                quantityInCart: 1
+                quantityInCart: 1,
+                priceInCart: 0
             }
         },
         {
@@ -82,7 +83,8 @@ export function ProductsContextProvider({ children }: ProductsContextProviderPro
             quantity: 1,
             cartInfo: {
                 isInCart: false,
-                quantityInCart: 1
+                quantityInCart: 1,
+                priceInCart: 0
             }
         },
         {
@@ -95,7 +97,8 @@ export function ProductsContextProvider({ children }: ProductsContextProviderPro
             quantity: 1,
             cartInfo: {
                 isInCart: false,
-                quantityInCart: 1
+                quantityInCart: 1,
+                priceInCart: 0
             }
         },
         {
@@ -108,7 +111,8 @@ export function ProductsContextProvider({ children }: ProductsContextProviderPro
             quantity: 1,
             cartInfo: {
                 isInCart: false,
-                quantityInCart: 1
+                quantityInCart: 1,
+                priceInCart: 0
             }
         },
         {
@@ -121,7 +125,8 @@ export function ProductsContextProvider({ children }: ProductsContextProviderPro
             quantity: 1,
             cartInfo: {
                 isInCart: false,
-                quantityInCart: 1
+                quantityInCart: 1,
+                priceInCart: 0
             }
         },
         {
@@ -134,7 +139,8 @@ export function ProductsContextProvider({ children }: ProductsContextProviderPro
             quantity: 1,
             cartInfo: {
                 isInCart: false,
-                quantityInCart: 1
+                quantityInCart: 1,
+                priceInCart: 0
             }
         },
         {
@@ -147,7 +153,8 @@ export function ProductsContextProvider({ children }: ProductsContextProviderPro
             quantity: 1,
             cartInfo: {
                 isInCart: false,
-                quantityInCart: 1
+                quantityInCart: 1,
+                priceInCart: 0
             }
         },
         {
@@ -160,7 +167,8 @@ export function ProductsContextProvider({ children }: ProductsContextProviderPro
             quantity: 1,
             cartInfo: {
                 isInCart: false,
-                quantityInCart: 1
+                quantityInCart: 1,
+                priceInCart: 0
             }
         },
         {
@@ -173,7 +181,8 @@ export function ProductsContextProvider({ children }: ProductsContextProviderPro
             quantity: 1,
             cartInfo: {
                 isInCart: false,
-                quantityInCart: 1
+                quantityInCart: 1,
+                priceInCart: 0
             }
         },
         {
@@ -186,7 +195,8 @@ export function ProductsContextProvider({ children }: ProductsContextProviderPro
             quantity: 1,
             cartInfo: {
                 isInCart: false,
-                quantityInCart: 1
+                quantityInCart: 1,
+                priceInCart: 0
             }
         },
         {
@@ -199,7 +209,8 @@ export function ProductsContextProvider({ children }: ProductsContextProviderPro
             quantity: 1,
             cartInfo: {
                 isInCart: false,
-                quantityInCart: 1
+                quantityInCart: 1,
+                priceInCart: 0
             }
         },
         {
@@ -212,17 +223,53 @@ export function ProductsContextProvider({ children }: ProductsContextProviderPro
             quantity: 1,
             cartInfo: {
                 isInCart: false,
-                quantityInCart: 1
+                quantityInCart: 1,
+                priceInCart: 0
             }
         }
     ])
+
+    function addToCart(id: string) {
+        const changedProductsList = productsList.filter(product => {
+            if (id == product.id) {
+                product.cartInfo.isInCart = true
+                product.cartInfo.quantityInCart = product.quantity
+                product.cartInfo.priceInCart = product.cartInfo.priceInCart + (product.price * product.quantity)
+                product.quantity = 1
+                return product
+            }
+            else {
+                return product
+            }
+        })
+
+        setProductsList(changedProductsList)
+    }
+
+    function formatPrice(price: number) {
+        let formatedPrice = price.toString()
+        if (formatedPrice.indexOf('.') == -1) {
+            return formatedPrice + ',00'
+        }
+        else {
+            let aux = formatedPrice.replace('.', ',').split(',')
+            if (aux[1].length == 1) {
+                aux[1] = aux[1] + '0'
+            }
+            return aux[0] + ',' + aux[1]
+        }
+    }
+
+    
 
     
 
     return (
         <ProductsContext.Provider 
             value={{ 
-                productsList
+                productsList,
+                addToCart,
+                formatPrice
             }}
         >
             {children}
