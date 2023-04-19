@@ -6,6 +6,13 @@ import { ProductsContext } from "../../../../contexts/ProductsContext";
 export function Cart() {
     const { productsList } = useContext(ProductsContext)
 
+    let allProductsValue = 0
+    productsList.forEach(product => {
+        if (product.cartInfo.isInCart) {
+            allProductsValue += product.cartInfo.priceInCart
+        }
+    })
+
     return (
         <CartContainer>
             <p>Cafés selecionados</p>
@@ -29,7 +36,7 @@ export function Cart() {
                 <PricesDiv>
                     <div>
                         <p>Total de itens</p>
-                        <p>R$ 9,90</p>
+                        <p>R$ {allProductsValue.toFixed(2)}</p>
                     </div>
                     <div>
                         <p>Entrega</p>
@@ -37,7 +44,7 @@ export function Cart() {
                     </div>
                     <div>
                         <p>Total</p>
-                        <p>R$ 13,40</p>
+                        <p>R$ {(allProductsValue + 3.5).toFixed(2)}</p>
                     </div>
                 </PricesDiv>
                 <ConfirmButton>CONFIRMAR PEDIDO</ConfirmButton>

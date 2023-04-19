@@ -22,6 +22,11 @@ interface ProductsContextProps {
     productsList: Product[]
     addToCart: (id: string) => void
     formatPrice: (price: number) => string
+    increaseQuantityHome: (id: string) => void
+    decreaseQuantityHome: (id: string) => void
+    increaseQuantityCart: (id: string) => void
+    decreaseQuantityCart: (id: string) => void
+    deleteCartProduct: (id: string) => void
 }
 export const ProductsContext = createContext({} as ProductsContextProps)
 
@@ -41,7 +46,7 @@ export function ProductsContextProvider({ children }: ProductsContextProviderPro
             quantity: 1,
             cartInfo: {
                 isInCart: false,
-                quantityInCart: 1,
+                quantityInCart: 0,
                 priceInCart: 0
             }
         },
@@ -55,7 +60,7 @@ export function ProductsContextProvider({ children }: ProductsContextProviderPro
             quantity: 1,
             cartInfo: {
                 isInCart: false,
-                quantityInCart: 1,
+                quantityInCart: 0,
                 priceInCart: 0
             }
         },
@@ -69,7 +74,7 @@ export function ProductsContextProvider({ children }: ProductsContextProviderPro
             quantity: 1,
             cartInfo: {
                 isInCart: false,
-                quantityInCart: 1,
+                quantityInCart: 0,
                 priceInCart: 0
             }
         },
@@ -83,7 +88,7 @@ export function ProductsContextProvider({ children }: ProductsContextProviderPro
             quantity: 1,
             cartInfo: {
                 isInCart: false,
-                quantityInCart: 1,
+                quantityInCart: 0,
                 priceInCart: 0
             }
         },
@@ -97,7 +102,7 @@ export function ProductsContextProvider({ children }: ProductsContextProviderPro
             quantity: 1,
             cartInfo: {
                 isInCart: false,
-                quantityInCart: 1,
+                quantityInCart: 0,
                 priceInCart: 0
             }
         },
@@ -111,7 +116,7 @@ export function ProductsContextProvider({ children }: ProductsContextProviderPro
             quantity: 1,
             cartInfo: {
                 isInCart: false,
-                quantityInCart: 1,
+                quantityInCart: 0,
                 priceInCart: 0
             }
         },
@@ -125,7 +130,7 @@ export function ProductsContextProvider({ children }: ProductsContextProviderPro
             quantity: 1,
             cartInfo: {
                 isInCart: false,
-                quantityInCart: 1,
+                quantityInCart: 0,
                 priceInCart: 0
             }
         },
@@ -139,7 +144,7 @@ export function ProductsContextProvider({ children }: ProductsContextProviderPro
             quantity: 1,
             cartInfo: {
                 isInCart: false,
-                quantityInCart: 1,
+                quantityInCart: 0,
                 priceInCart: 0
             }
         },
@@ -153,7 +158,7 @@ export function ProductsContextProvider({ children }: ProductsContextProviderPro
             quantity: 1,
             cartInfo: {
                 isInCart: false,
-                quantityInCart: 1,
+                quantityInCart: 0,
                 priceInCart: 0
             }
         },
@@ -167,7 +172,7 @@ export function ProductsContextProvider({ children }: ProductsContextProviderPro
             quantity: 1,
             cartInfo: {
                 isInCart: false,
-                quantityInCart: 1,
+                quantityInCart: 0,
                 priceInCart: 0
             }
         },
@@ -181,7 +186,7 @@ export function ProductsContextProvider({ children }: ProductsContextProviderPro
             quantity: 1,
             cartInfo: {
                 isInCart: false,
-                quantityInCart: 1,
+                quantityInCart: 0,
                 priceInCart: 0
             }
         },
@@ -195,7 +200,7 @@ export function ProductsContextProvider({ children }: ProductsContextProviderPro
             quantity: 1,
             cartInfo: {
                 isInCart: false,
-                quantityInCart: 1,
+                quantityInCart: 0,
                 priceInCart: 0
             }
         },
@@ -209,7 +214,7 @@ export function ProductsContextProvider({ children }: ProductsContextProviderPro
             quantity: 1,
             cartInfo: {
                 isInCart: false,
-                quantityInCart: 1,
+                quantityInCart: 0,
                 priceInCart: 0
             }
         },
@@ -223,7 +228,7 @@ export function ProductsContextProvider({ children }: ProductsContextProviderPro
             quantity: 1,
             cartInfo: {
                 isInCart: false,
-                quantityInCart: 1,
+                quantityInCart: 0,
                 priceInCart: 0
             }
         }
@@ -233,14 +238,11 @@ export function ProductsContextProvider({ children }: ProductsContextProviderPro
         const changedProductsList = productsList.filter(product => {
             if (id == product.id) {
                 product.cartInfo.isInCart = true
-                product.cartInfo.quantityInCart = product.quantity
-                product.cartInfo.priceInCart = product.cartInfo.priceInCart + (product.price * product.quantity)
+                product.cartInfo.quantityInCart += product.quantity
+                product.cartInfo.priceInCart += (product.price * product.quantity)
                 product.quantity = 1
-                return product
             }
-            else {
-                return product
-            }
+            return product
         })
 
         setProductsList(changedProductsList)
@@ -252,13 +254,73 @@ export function ProductsContextProvider({ children }: ProductsContextProviderPro
             return formatedPrice + ',00'
         }
         else {
-            let aux = formatedPrice.replace('.', ',').split(',')
-            if (aux[1].length == 1) {
-                aux[1] = aux[1] + '0'
-            }
-            return aux[0] + ',' + aux[1]
+            return price.toFixed(2)
         }
     }
+
+    function increaseQuantityHome(id: string) {
+        const productsListChanged = productsList.filter(product => {
+            if (id == product.id) {
+                product.quantity = product.quantity + 1
+            }
+            return product
+        })
+
+        setProductsList(productsListChanged)
+    }
+
+    function decreaseQuantityHome(id: string) {
+        const productsListChanged = productsList.filter(product => {
+            if (id == product.id) {
+                if (product.quantity > 1) {
+                    product.quantity = product.quantity - 1
+                }
+            }
+            return product
+        })
+
+        setProductsList(productsListChanged)
+    }
+
+    function increaseQuantityCart(id: string) {
+        const productsListModified = productsList.filter(product => {
+            if (id == product.id) {
+                product.cartInfo.quantityInCart += 1
+                product.cartInfo.priceInCart += Number(product.price.toFixed(2)) //Pra n guardar um número tipo 3.88888889 (Ainda assim preciso formatar o número na hora de mostrar na tela pq ele guarda o número como 8 ou 8.9 por exemplo...)
+            }
+            return product
+        })
+
+        setProductsList(productsListModified)
+    }
+
+    function decreaseQuantityCart(id: string) {
+        const productsListModified = productsList.filter(product => {
+            if (id == product.id) {
+                if (product.cartInfo.quantityInCart > 1) {
+                    product.cartInfo.quantityInCart -= 1
+                    product.cartInfo.priceInCart -= Number(product.price.toFixed(2))
+                }
+            }
+            return product
+        })
+
+        setProductsList(productsListModified)
+    }
+
+    function deleteCartProduct(id: string) {
+        const productsListModified = productsList.filter(product => {
+            if (id == product.id) {
+                product.cartInfo.isInCart = false
+                product.cartInfo.priceInCart = 0
+                product.cartInfo.quantityInCart = 0
+            }
+            return product
+        })
+
+        setProductsList(productsListModified)
+    }
+    
 
     
 
@@ -269,7 +331,12 @@ export function ProductsContextProvider({ children }: ProductsContextProviderPro
             value={{ 
                 productsList,
                 addToCart,
-                formatPrice
+                formatPrice,
+                increaseQuantityHome,
+                decreaseQuantityHome,
+                increaseQuantityCart,
+                decreaseQuantityCart,
+                deleteCartProduct
             }}
         >
             {children}
