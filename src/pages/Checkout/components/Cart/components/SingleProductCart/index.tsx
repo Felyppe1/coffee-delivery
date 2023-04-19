@@ -1,10 +1,8 @@
 import { Minus, Plus, Trash } from "phosphor-react";
-import { ProductQuantity } from "../../../../../../components/ProductQuantity";
 import coffeeImg from "../../../../../../assets/coffees/americano.svg"
 import { ProductButtonsDiv, ProductQuantityDiv, SingleProductCartDiv } from "./styles";
 import { useContext } from "react";
-import { ProductsContext, ProductsContextProvider } from "../../../../../../contexts/ProductsContext";
-import { stringify } from "uuid";
+import { ProductsContext } from "../../../../../../contexts/ProductsContext";
 
 interface SingleProductCartProps {
     id: string

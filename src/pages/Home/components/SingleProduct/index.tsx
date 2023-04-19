@@ -1,9 +1,8 @@
 import { AddToCartContainer, ProductContainer, ProductQuantityDiv } from "./styles";
 import coffeeImg from '../../../../assets/coffees/expresso.svg'
 import { Plus, Minus, ShoppingCartSimple, TestTube } from 'phosphor-react'
-import { ProductQuantity } from "../../../../components/ProductQuantity";
 import { useContext } from "react";
-import { Product, ProductsContext } from "../../../../contexts/ProductsContext";
+import { ProductsContext } from "../../../../contexts/ProductsContext";
 
 
 interface SingleProductProps {
