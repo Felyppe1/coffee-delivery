@@ -35,7 +35,7 @@ export const ProductButtonsDiv = styled.div`
         justify-content: space-between;
         gap: .6rem;
 
-        button {
+        & > button {
             background-color: ${props => props.theme.baseButton};
             display: flex;
             align-items: center;
@@ -51,7 +51,36 @@ export const ProductButtonsDiv = styled.div`
             p {
                 color: ${props => props.theme.baseText};
                 font-size: .75rem;
+                user-select: none;
             }
         }
+    }
+`
+
+export const ProductQuantityDiv = styled.div`
+    background-color: ${props => props.theme.baseButton};
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+    padding: .4rem;
+    border-radius: 6px;
+
+    button {
+        background-color: transparent;
+        display: flex;
+        align-items: center;
+
+        svg {
+            color: ${props => props.theme.purpleDark};
+            cursor: pointer;
+
+            &:hover {
+                color: ${props => props.theme.purple};
+            }
+        }
+    }
+
+    p {
+        user-select: none;
     }
 `

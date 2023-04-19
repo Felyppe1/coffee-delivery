@@ -12,6 +12,7 @@ export const ProductContainer = styled.div`
 
     img {
         margin-top: -1rem;
+        user-select: none;
     }
 
     & > div:first-of-type {
@@ -28,6 +29,7 @@ export const ProductContainer = styled.div`
             font-weight: 700;
             border-radius: 100px;
             text-transform: uppercase;
+            user-select: none;
         }
     }
 
@@ -85,7 +87,7 @@ export const AddToCartContainer = styled.div`
             }
         } */
 
-        button {
+        & > button {
             background-color: ${props => props.theme.purpleDark};
             color: ${props => props.theme.background};
             border-radius: 6px;
@@ -101,5 +103,35 @@ export const AddToCartContainer = styled.div`
                 vertical-align: middle;
             }
         }
+    }
+`
+
+export const ProductQuantityDiv = styled.div`
+    background-color: ${props => props.theme.baseButton};
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+    padding: .4rem;
+    border-radius: 6px;
+
+    button {
+        background-color: transparent;
+        display: flex;
+        align-items: center;
+
+        svg {
+            color: ${props => props.theme.purpleDark};
+            cursor: pointer;
+
+            &:hover {
+                color: ${props => props.theme.purple};
+            }
+        }
+    }
+
+    
+
+    p {
+        user-select: none;
     }
 `
