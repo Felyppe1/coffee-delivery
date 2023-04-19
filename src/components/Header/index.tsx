@@ -6,6 +6,15 @@ import { useContext } from "react";
 import { ProductsContext } from "../../contexts/ProductsContext";
 
 export function Header() {
+    const { productsList } = useContext(ProductsContext)
+
+    let productsTotalInCart = 0 
+    productsList.forEach(product => {
+        if (product.cartInfo.isInCart) {
+            productsTotalInCart += 1
+        }
+    })
+
     return (
         <HeaderContainer>
             <nav>
@@ -20,7 +29,7 @@ export function Header() {
                     <NavLink to='/checkout' title='Checkout'>
                         <div>
                             <ShoppingCart size={22} weight="fill" />
-                            <p>{/* {totalProductsInCart} */}1</p>
+                            {(productsTotalInCart != 0) ? <p>{productsTotalInCart}</p> : <></>}
                         </div>
                     </NavLink>
                 </RightNavDiv>
