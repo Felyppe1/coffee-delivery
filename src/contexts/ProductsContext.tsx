@@ -254,7 +254,7 @@ export function ProductsContextProvider({ children }: ProductsContextProviderPro
             return formatedPrice + ',00'
         }
         else {
-            return price.toFixed(2)
+            return price.toFixed(2).replace(".", ",")
         }
     }
 

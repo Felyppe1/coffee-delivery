@@ -4,7 +4,7 @@ import { CartContainer, ConfirmButton, PricesDiv } from "./styles";
 import { ProductsContext } from "../../../../contexts/ProductsContext";
 
 export function Cart() {
-    const { productsList } = useContext(ProductsContext)
+    const { productsList, formatPrice } = useContext(ProductsContext)
 
     let allProductsValue = 0
     productsList.forEach(product => {
@@ -36,7 +36,7 @@ export function Cart() {
                 <PricesDiv>
                     <div>
                         <p>Total de itens</p>
-                        <p>R$ {allProductsValue.toFixed(2)}</p>
+                        <p>R$ {formatPrice(allProductsValue)}</p>
                     </div>
                     <div>
                         <p>Entrega</p>
@@ -44,7 +44,7 @@ export function Cart() {
                     </div>
                     <div>
                         <p>Total</p>
-                        <p>R$ {(allProductsValue + 3.5).toFixed(2)}</p>
+                        <p>R$ {formatPrice(allProductsValue + 3.5)}</p>
                     </div>
                 </PricesDiv>
                 <ConfirmButton>CONFIRMAR PEDIDO</ConfirmButton>
