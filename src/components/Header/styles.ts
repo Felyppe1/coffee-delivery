@@ -6,6 +6,22 @@ export const HeaderContainer = styled.header`
     nav {
         display: flex;
         justify-content: space-between;
+        gap: 1rem;
+
+        & > a {
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    
+
+    @media (max-width: 350px) {
+        nav {
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
     }
 `
 
