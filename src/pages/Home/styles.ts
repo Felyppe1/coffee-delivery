@@ -28,6 +28,10 @@ export const Section1 = styled.section`
             width: 98%;
         }
     }
+
+    @media (max-width: 400px) {
+        padding: 0 0 4rem 0;
+    }
 `
 
 export const Section1Container1 = styled.div`
@@ -48,34 +52,56 @@ export const Section1Container1 = styled.div`
         font-size: 1.25rem;
         line-height: 100%;
     }
+
+    @media (max-width: 400px) {
+        h1 {
+            font-size: 2.5rem;
+            line-height: 110%;
+        }
+    }
 `
 
 export const Section1Container2 = styled.div`
-    display: flex;
-    flex-direction: column;
     gap: 1.25rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 
     & > div {
         display: flex;
-        gap: 3rem;
+        align-items: center;
+        gap: .75rem;
 
-        & > div {
-            display: flex;
-            align-items: center;
-            gap: .75rem;
-
-            & > svg {
-                background-color: ${props => props.theme.baseText};
-                color: ${props => props.theme.background};
-                padding: .5rem;
-                border-radius: 50%;
-                flex-shrink: 0;
-            }
-
-            & > p {
-                color: ${props => props.theme.baseText}
-            }
+        & > svg {
+            background-color: ${props => props.theme.baseText};
+            color: ${props => props.theme.background};
+            padding: .5rem;
+            border-radius: 50%;
+            flex-shrink: 0;
         }
+
+        svg[id=shoppingCart] {
+            background-color: ${props => props.theme.yellowDark};
+        }
+
+        svg[id=package] {
+            background-color: ${props => props.theme.baseText};
+        }
+
+        svg[id=timer] {
+            background-color: ${props => props.theme.yellow};
+        }
+
+        svg[id=coffee] {
+            background-color: ${props => props.theme.purple};
+        }
+
+        & > p {
+            color: ${props => props.theme.baseText}
+        }
+    }
+
+    @media (max-width: 510px) {
+        grid-template-columns: 1fr;
     }
 `
 

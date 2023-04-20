@@ -19,24 +19,20 @@ export function Home() {
                 </Section1Container1>
                 <Section1Container2>
                     <div>
-                        <div>
-                            <ShoppingCart id='shoppingCart' size={32} weight="fill" />
-                            <p>Compra simples e segura</p>
-                        </div>
-                        <div>
-                            <Package size={32} weight="fill" />
-                            <p>Embalagem mantém o café intacto</p>
-                        </div>
+                        <ShoppingCart id='shoppingCart' size={32} weight="fill" />
+                        <p>Compra simples e segura</p>
                     </div>
                     <div>
-                        <div>
-                            <Timer size={32} weight="fill" />
-                            <p>Entrega rápida e rastreada</p>
-                        </div>
-                        <div>
-                            <Coffee size={32} weight="fill" />
-                            <p>O café chega fresquinho até você</p>
-                        </div>
+                        <Package size={32} id='package' weight="fill" />
+                        <p>Embalagem mantém o café intacto</p>
+                    </div>
+                    <div>
+                        <Timer size={32} id='timer' weight="fill" />
+                        <p>Entrega rápida e rastreada</p>
+                    </div>
+                    <div>
+                        <Coffee size={32} id='coffee' weight="fill" />
+                        <p>O café chega fresquinho até você</p>
                     </div>
                 </Section1Container2>
             </div>

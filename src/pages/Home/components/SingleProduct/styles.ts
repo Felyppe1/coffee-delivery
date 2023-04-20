@@ -47,6 +47,10 @@ export const ProductContainer = styled.div`
         text-align: center;
         margin-bottom: 1rem;
     }
+
+    @media (max-width: 325px) {
+        max-width: 15rem;
+    }
 `
 
 export const AddToCartContainer = styled.div`
@@ -68,24 +72,6 @@ export const AddToCartContainer = styled.div`
     & > div {
         display: flex;
         gap: .6rem;
-
-        /* & > div:first-child {
-            background-color: ${props => props.theme.baseButton};
-            display: flex;
-            align-items: center;
-            gap: .4rem;
-            padding: .3rem;
-            border-radius: 6px;
-
-            svg {
-                color: ${props => props.theme.purpleDark};
-                cursor: pointer;
-
-                &:hover {
-                    color: ${props => props.theme.purple};
-                }
-            }
-        } */
 
         & > button {
             background-color: ${props => props.theme.purpleDark};

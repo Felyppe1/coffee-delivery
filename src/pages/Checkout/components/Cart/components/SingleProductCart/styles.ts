@@ -19,6 +19,12 @@ export const SingleProductCartDiv = styled.div`
         color: ${props => props.theme.baseText};
         font-weight: 700;
     }
+
+    @media (max-width: 540px) {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 2rem 0 1rem 0;
+    }
 `
 
 export const ProductButtonsDiv = styled.div`
@@ -43,6 +49,10 @@ export const ProductButtonsDiv = styled.div`
             padding: .4rem .5rem;
             border-radius: 6px;
             cursor: pointer;
+
+            &:hover {
+                background-color: ${props => props.theme.baseHover};
+            }
 
             svg {
                 color: ${props => props.theme.purple};

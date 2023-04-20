@@ -17,4 +17,8 @@ export const GlobalStyles = createGlobalStyle`
     body, input, textarea, button {
         font-family: 'Roboto', sans-serif;
     }
+
+    @media (max-width: 380px) {
+        padding: 0 1.3rem 8rem 1.3rem;
+    }
 `

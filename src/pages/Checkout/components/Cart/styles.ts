@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const CartContainer = styled.div`
-    width: 28rem;
+    min-width: 28rem;
 
     & > p {
         color: ${props => props.theme.baseSubtitle};
@@ -17,6 +17,17 @@ export const CartContainer = styled.div`
         display: flex;
         flex-direction: column;
         border-radius: 6px 44px;
+    }
+
+    @media (max-width: 1099px) {
+        min-width: auto;
+        width: 100%;
+    }
+
+    @media (max-width: 435px) {
+        & > div {
+            padding: 0 1rem 2rem 1rem;
+        }
     }
 `
 
