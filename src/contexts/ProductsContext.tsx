@@ -39,7 +39,7 @@ export function ProductsContextProvider({ children }: ProductsContextProviderPro
         {
             id: uuidv4(),
             name: "Expresso Tradicional",
-            image: "",
+            image: "images/coffees/expresso.svg",
             tags: ["Tradicional"],
             description: "O tradicional café feito com água quente e grãos moídos",
             price: 9.90,
@@ -53,7 +53,7 @@ export function ProductsContextProvider({ children }: ProductsContextProviderPro
         {
             id: uuidv4(),
             name: "Expresso Americano",
-            image: "",
+            image: "images/coffees/americano.svg",
             tags: ["Tradicional"],
             description: "Expresso diluído, menos intenso que o tradicional",
             price: 8.00,            
@@ -67,7 +67,7 @@ export function ProductsContextProvider({ children }: ProductsContextProviderPro
         {
             id: uuidv4(),
             name: "Expresso Cremoso",
-            image: "",
+            image: "images/coffees/expresso-cremoso.svg",
             tags: ["Tradicional"],
             description: "Café expresso tradicional com espuma cremosa",
             price: 9.90,
@@ -81,7 +81,7 @@ export function ProductsContextProvider({ children }: ProductsContextProviderPro
         {
             id: uuidv4(),
             name: "Expresso Gelado",
-            image: "",
+            image: "images/coffees/cafe-gelado.svg",
             tags: ["Tradicional", "Gelado"],
             description: "Bebida preparada com café expresso e cubos de gelo",
             price: 10.90,            
@@ -95,7 +95,7 @@ export function ProductsContextProvider({ children }: ProductsContextProviderPro
         {
             id: uuidv4(),
             name: "Café com Leite",
-            image: "",
+            image: "images/coffees/cafe-com-leite.svg",
             tags: ["Tradicional", "Com Leite"],
             description: "Meio a meio de expresso tradicional com leite vaporizado",
             price: 9.00,            
@@ -109,7 +109,7 @@ export function ProductsContextProvider({ children }: ProductsContextProviderPro
         {
             id: uuidv4(),
             name: "Latte",
-            image: "",
+            image: "images/coffees/latte.svg",
             tags: ["Tradicional", "Com Leite"],
             description: "Uma dose de café expresso com o dobro de leite e espuma cremosa",
             price: 11.00,
@@ -123,7 +123,7 @@ export function ProductsContextProvider({ children }: ProductsContextProviderPro
         {
             id: uuidv4(),
             name: "Capuccino",
-            image: "",
+            image: "images/coffees/capuccino.svg",
             tags: ["Tradicional", "Com Leite"],
             description: "Bebida com canela feita de doses iguais de café, leite e espuma",
             price: 9.90,
@@ -137,7 +137,7 @@ export function ProductsContextProvider({ children }: ProductsContextProviderPro
         {
             id: uuidv4(),
             name: "Macchiato",
-            image: "",
+            image: "images/coffees/macchiato.svg",
             tags: ["Tradicional", "Com Leite"],
             description: "Café expresso misturado com um pouco de leite quente e espuma",
             price: 9.90,
@@ -151,7 +151,7 @@ export function ProductsContextProvider({ children }: ProductsContextProviderPro
         {
             id: uuidv4(),
             name: "Mocaccino",
-            image: "",
+            image: "images/coffees/mochaccino.svg",
             tags: ["Tradicional", "Com Leite"],
             description: "Café expresso com calda de chocolate, pouco leite e espuma",
             price: 9.90,
@@ -165,7 +165,7 @@ export function ProductsContextProvider({ children }: ProductsContextProviderPro
         {
             id: uuidv4(),
             name: "Chocolate Quente",
-            image: "",
+            image: "images/coffees/chocolate-quente.svg",
             tags: ["Especial", "Com Leite"],
             description: "Bebida feita com chocolate dissolvido no leite quente e café",
             price: 12.00,
@@ -179,7 +179,7 @@ export function ProductsContextProvider({ children }: ProductsContextProviderPro
         {
             id: uuidv4(),
             name: "Cubano",
-            image: "",
+            image: "images/coffees/cubano.svg",
             tags: ["Especial", "Alcoólico", "Gelado"],
             description: "Drink gelado de café expresso com rum, creme de leite e hortelã",
             price: 9.90,
@@ -193,7 +193,7 @@ export function ProductsContextProvider({ children }: ProductsContextProviderPro
         {
             id: uuidv4(),
             name: "Havaiano",
-            image: "",
+            image: "images/coffees/havaiano.svg",
             tags: ["Especial"],
             description: "Bebida adocicada preparada com café e leite de coco",
             price: 9.90,
@@ -207,7 +207,7 @@ export function ProductsContextProvider({ children }: ProductsContextProviderPro
         {
             id: uuidv4(),
             name: "Árabe",
-            image: "",
+            image: "images/coffees/arabe.svg",
             tags: ["Especial"],
             description: "Bebida preparada com grãos de café árabe e especiarias",
             price: 9.90,
@@ -221,7 +221,7 @@ export function ProductsContextProvider({ children }: ProductsContextProviderPro
         {
             id: uuidv4(),
             name: "Irlandês",
-            image: "",
+            image: "images/coffees/irlandes.svg",
             tags: ["Especial", "Alcoólico"],
             description: "Bebida a base de café, uísque irlandês, açúcar e chantilly",
             price: 11.00,

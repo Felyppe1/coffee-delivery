@@ -1,5 +1,4 @@
 import { AddToCartContainer, ProductContainer, ProductQuantityDiv } from "./styles";
-import coffeeImg from '../../../../assets/coffees/expresso.svg'
 import { Plus, Minus, ShoppingCartSimple, TestTube } from 'phosphor-react'
 import { useContext } from "react";
 import { ProductsContext } from "../../../../contexts/ProductsContext";
@@ -21,7 +20,9 @@ export function SingleProduct({ id, name, image, tags, description, price, isInC
 
     return (
         <ProductContainer>
-            <img src={coffeeImg} alt="" />
+            {/* <img src={coffeeImg} alt="" /> */}
+            {/* <img src={require('../../../../assets/coffees/expresso.svg').default} alt="" /> */}
+            <img src={image} alt="" />
             <div>
                 {tags.map(tag => {
                     return (

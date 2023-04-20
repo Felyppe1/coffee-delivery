@@ -1,5 +1,4 @@
 import { Minus, Plus, Trash } from "phosphor-react";
-import coffeeImg from "../../../../../../assets/coffees/americano.svg"
 import { ProductButtonsDiv, ProductQuantityDiv, SingleProductCartDiv } from "./styles";
 import { useContext } from "react";
 import { ProductsContext } from "../../../../../../contexts/ProductsContext";
@@ -20,7 +19,7 @@ export function SingleProductCart({id, name, image, price, quantityInCart, isInC
     return (
         <SingleProductCartDiv>
             <div>
-                <img src={coffeeImg} alt="" />
+                <img src={image} alt="" />
                 <ProductButtonsDiv>
                     <p>{name}</p>
                     <div>
