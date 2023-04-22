@@ -1,38 +1,25 @@
 import { Bank, CreditCard, CurrencyDollar, MapPinLine, Money } from "phosphor-react";
 import { BuyerInfosContainer, FillInInfosContainer, PaymentMethodContainer } from "./styles";
-import { useForm } from "react-hook-form";
+import { useForm, useFormContext } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as zod from 'zod'
+import { useContext, useState } from "react";
+import { defaultTheme } from "../../../../styles/themes/default";
+import { ProductsContext } from "../../../../contexts/ProductsContext";
 
-const PaymentFormValidationSchema = zod.object({ //É um objeto pq ele retorna um objeto
-    cep: zod.string(),
-    rua: zod.string(),
-    numero: zod.string(),
-    complemento: zod.string(),
-    bairro: zod.string(),
-    cidade: zod.string(),
-    uf: zod.string()
-})
+interface BuyerInfosProps {
+    selectedPaymentMethod: number
+    handleSelectPaymentMethod: (id: number) => number
+}
 
-export function BuyerInfos() {
-    const paymentForm = useForm({ //objeto de configurações
-        resolver: zodResolver(PaymentFormValidationSchema), 
-        defaultValues: {
-            cep: '',
-            rua: '',
-            numero: '',
-            complemento: '',
-            bairro: '',
-            cidade: '',
-            uf: ''
-        }
-    })
+interface SelectedPaymentMethodProps {
+    selectedPaymentMethod: number
+}
 
-    const { register, handleSubmit } = paymentForm
+export function BuyerInfos({ selectedPaymentMethod, handleSelectPaymentMethod }: BuyerInfosProps) {
+    const { register } = useFormContext()
 
-    function testando() {
-        console.log('teste')
-    }
+    /* const { selectedPaymentMethod, handleSelectPaymentMethod } = useContext(ProductsContext) */
 
     return (
         <BuyerInfosContainer>
@@ -46,7 +33,7 @@ export function BuyerInfos() {
                             <p>Informe o endereço onde deseja receber o seu pedido</p>
                         </div>
                     </div>
-                    <form onSubmit={handleSubmit(testando)}>
+                    <div>
                         <input type="text" title='cep' placeholder="CEP" {...register('cep')} />
                         <input type="text" placeholder="Rua" {...register('rua')}/>
                         <div> 
@@ -58,8 +45,7 @@ export function BuyerInfos() {
                             <input type="text" title='cidade' placeholder="Cidade" {...register('cidade')}/>
                             <input type="text" title='uf' placeholder="UF" {...register('uf')}/>
                         </div>
-                        <button type="submit"></button>
-                    </form>
+                    </div>
                 </FillInInfosContainer>
 
                 <PaymentMethodContainer>
@@ -71,17 +57,41 @@ export function BuyerInfos() {
                         </div>
                     </div>
                     <div>
-                        <button>
+                        <button 
+                            type="button" 
+                            onClick={() => handleSelectPaymentMethod(1)} 
+                            style={{
+                                outline: (selectedPaymentMethod == 1) ? `2px solid ${defaultTheme.purple}` : ''
+                            }}
+                        >
+
                             <CreditCard size={16} />
                             <p>CARTÃO DE CRÉDITO</p>
+
                         </button>
-                        <button>
+                        <button 
+                            type="button" 
+                            onClick={() => handleSelectPaymentMethod(2)}
+                            style={{
+                                outline: (selectedPaymentMethod == 2) ? `2px solid ${defaultTheme.purple}` : ''
+                            }}
+                        >
+
                             <Bank size={16} />
                             <p>CARTÃO DE DÉBITO</p>
+
                         </button>
-                        <button>
+                        <button 
+                            type="button" 
+                            onClick={() => handleSelectPaymentMethod(3)}
+                            style={{
+                                outline: (selectedPaymentMethod == 3) ? `2px solid ${defaultTheme.purple}` : ''
+                            }}
+                        >
+
                             <Money size={16} />
                             <p>DINHEIRO</p>
+
                         </button>
                     </div>
                 </PaymentMethodContainer>

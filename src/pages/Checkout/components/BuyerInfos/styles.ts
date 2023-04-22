@@ -60,11 +60,12 @@ const BaseFirstDiv = styled.div`
 export const FillInInfosContainer = styled(BaseFirstDiv)`
     & > div:first-child {
         svg {
-            color: ${props => props.theme.yellow}
+            color: ${props => props.theme.yellow};
+            flex-shrink: 0;
         }
     }
 
-    form {
+    & > div:last-child { //form {}
         display: flex;
         flex-direction: column;
         gap: 1rem;
@@ -76,8 +77,10 @@ export const FillInInfosContainer = styled(BaseFirstDiv)`
 
         input {
             background-color: ${props => props.theme.baseInput};
+            color: ${props => props.theme.baseText};
             padding: .75rem;
             border-radius: 4px;
+            font-size: .875rem;
         }
 
         input[title=cep] {
@@ -103,6 +106,12 @@ export const FillInInfosContainer = styled(BaseFirstDiv)`
 `
 
 export const PaymentMethodContainer = styled(BaseFirstDiv)`
+    & > div:first-child {
+        svg {
+            flex-shrink: 0;
+        }
+    }
+
     & > div:last-child {
         display: grid;
         /* grid-template-columns: 1fr 1fr 1fr; */
@@ -122,10 +131,6 @@ export const PaymentMethodContainer = styled(BaseFirstDiv)`
                 background-color: ${props => props.theme.baseHover};
             }
 
-            &:focus {
-                outline: 2px solid ${props => props.theme.purple};
-            }
-
             svg {
                 color: ${props => props.theme.purple};
                 flex-shrink: 0;
@@ -136,9 +141,5 @@ export const PaymentMethodContainer = styled(BaseFirstDiv)`
                 font-size: .75rem;
             }
         }
-
-        /* & > button:last-child {
-            flex-grow: 2;
-        } */
     }
 `

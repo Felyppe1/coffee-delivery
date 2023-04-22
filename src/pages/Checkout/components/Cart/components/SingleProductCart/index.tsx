@@ -24,14 +24,14 @@ export function SingleProductCart({id, name, image, price, quantityInCart, isInC
                     <p>{name}</p>
                     <div>
                         <ProductQuantityDiv>
-                            <button><Minus onClick={() => decreaseQuantityCart(id)} size={16}/></button>
+                            <button type="button"><Minus onClick={() => decreaseQuantityCart(id)} size={16}/></button>
                             
                             <p>{quantityInCart}</p>
 
-                            <button><Plus onClick={() => increaseQuantityCart(id)} size={16}/></button>
+                            <button type="button"><Plus onClick={() => increaseQuantityCart(id)} size={16}/></button>
                             
                         </ProductQuantityDiv>
-                        <button onClick={() => deleteCartProduct(id)}>
+                        <button type="button" onClick={() => deleteCartProduct(id)}>
                             <Trash size={16} />
                             <p>REMOVER</p>
                         </button>

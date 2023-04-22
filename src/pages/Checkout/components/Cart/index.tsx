@@ -2,8 +2,15 @@ import { useContext } from "react";
 import { SingleProductCart } from "./components/SingleProductCart";
 import { CartContainer, ConfirmButton, PricesDiv } from "./styles";
 import { ProductsContext } from "../../../../contexts/ProductsContext";
+import { useFormContext } from "react-hook-form";
 
-export function Cart() {
+interface CartProps {
+    selectedPaymentMethod: number
+}
+
+export function Cart({ selectedPaymentMethod }: CartProps) {
+    const { handleSubmit } = useFormContext()
+
     const { productsList, formatPrice } = useContext(ProductsContext)
 
     let allProductsValue = 0
@@ -47,7 +54,7 @@ export function Cart() {
                         <p>R$ {formatPrice(allProductsValue + 3.5)}</p>
                     </div>
                 </PricesDiv>
-                <ConfirmButton>CONFIRMAR PEDIDO</ConfirmButton>
+                <ConfirmButton type="submit">CONFIRMAR PEDIDO</ConfirmButton>
             </div>
             
         </CartContainer>
