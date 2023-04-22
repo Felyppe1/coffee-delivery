@@ -1,6 +1,20 @@
 import { ReactNode, createContext, useState } from 'react'
 import {v4 as uuidv4} from 'uuid'
-import Teste from '../assets/coffees/americano.svg'
+import * as zod from 'zod'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+
+/* export const PaymentFormValidationSchema = zod.object({ //É um objeto pq ele retorna um objeto
+    cep: zod.string().min(1, 'Digite um CEP válido'),
+    rua: zod.string().min(1),
+    numero: zod.string().min(1),
+    complemento: zod.string().min(1),
+    bairro: zod.string().min(1),
+    cidade: zod.string().min(1),
+    uf: zod.string().length(2)
+})
+
+export type PaymentFormData = zod.infer<typeof PaymentFormValidationSchema> //FormContext só funciona com a tipagem */
 
 interface CartInfoProps {
     isInCart: true | false
@@ -27,6 +41,10 @@ interface ProductsContextProps {
     increaseQuantityCart: (id: string) => void
     decreaseQuantityCart: (id: string) => void
     deleteCartProduct: (id: string) => void
+    /* confirmPayment: (data: PaymentFormData) => void
+    selectedPaymentMethod: number
+    handleSelectPaymentMethod: (id: number) => void
+    paymentForm: object */
 }
 export const ProductsContext = createContext({} as ProductsContextProps)
 
@@ -320,6 +338,39 @@ export function ProductsContextProvider({ children }: ProductsContextProviderPro
 
         setProductsList(productsListModified)
     }
+
+    /* //DO FORMULÁRIO
+    const paymentForm = useForm<PaymentFormData>({ //objeto de configurações
+        resolver: zodResolver(PaymentFormValidationSchema), 
+        defaultValues: {
+            cep: '',
+            rua: '',
+            numero: '',
+            complemento: '',
+            bairro: '',
+            cidade: '',
+            uf: ''
+        }
+    })
+
+    const { register, handleSubmit } = paymentForm
+
+    const [ selectedPaymentMethod, setSelectedPaymentMethod ] = useState(0) //useState retorna uma ARRAYYYYYYYYYYYY
+
+    function handleSelectPaymentMethod(id: number) {
+        setSelectedPaymentMethod(state => {
+            if (state == id) {
+                return 0
+            }
+            else {
+                return id
+            }
+        })
+    }
+
+    function confirmPayment(data: PaymentFormData) {
+        console.log('teste')
+    } */
     
 
     
@@ -336,7 +387,11 @@ export function ProductsContextProvider({ children }: ProductsContextProviderPro
                 decreaseQuantityHome,
                 increaseQuantityCart,
                 decreaseQuantityCart,
-                deleteCartProduct
+                deleteCartProduct/* ,
+                confirmPayment,
+                handleSelectPaymentMethod,
+                selectedPaymentMethod,
+                paymentForm */
             }}
         >
             {children}
