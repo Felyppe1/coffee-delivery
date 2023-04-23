@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
 export const CartContainer = styled.div`
-    min-width: 28rem;
-
     & > p {
         color: ${props => props.theme.baseSubtitle};
         font-family: "Baloo 2", cursive;
@@ -24,7 +22,7 @@ export const CartContainer = styled.div`
         width: 100%;
     }
 
-    @media (max-width: 435px) {
+    @media (max-width: 332px) {
         & > div {
             padding: 0 1rem 2rem 1rem;
         }

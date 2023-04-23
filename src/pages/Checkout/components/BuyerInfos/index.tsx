@@ -35,16 +35,12 @@ export function BuyerInfos({ selectedPaymentMethod, handleSelectPaymentMethod }:
                     </div>
                     <div>
                         <input type="text" title='cep' placeholder="CEP" {...register('cep')} />
-                        <input type="text" placeholder="Rua" {...register('rua')}/>
-                        <div> 
-                            <input type="text" placeholder="Número" {...register('numero')}/>
-                            <input type="text" title='complemento' placeholder="Complemento" {...register('complemento')}/>
-                        </div>
-                        <div>
-                            <input type="text" placeholder="Bairro" {...register('bairro')}/>
-                            <input type="text" title='cidade' placeholder="Cidade" {...register('cidade')}/>
-                            <input type="text" title='uf' placeholder="UF" {...register('uf')}/>
-                        </div>
+                        <input type="text" title='rua' placeholder="Rua" {...register('rua')}/>
+                        <input type="text" title='numero' placeholder="Número" {...register('numero')}/>
+                        <input type="text" title='complemento' placeholder="Complemento" {...register('complemento')}/>
+                        <input type="text" title='bairro' placeholder="Bairro" {...register('bairro')}/>
+                        <input type="text" title='cidade' placeholder="Cidade" {...register('cidade')}/>
+                        <input type="text" title='uf' placeholder="UF" {...register('uf')}/>
                     </div>
                 </FillInInfosContainer>
 

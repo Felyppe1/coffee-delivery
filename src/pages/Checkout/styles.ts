@@ -1,13 +1,12 @@
 import styled from "styled-components";
 
 export const CheckoutContainer = styled.form`
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 58% auto;
     gap: 2.5rem;
 
-    @media (max-width: 1275px) {
-        flex-direction: column;
-        max-width: 50rem;
+    @media (max-width: 910px) {
+        grid-template-columns: 1fr;
         margin: 0 auto;
     }
 `

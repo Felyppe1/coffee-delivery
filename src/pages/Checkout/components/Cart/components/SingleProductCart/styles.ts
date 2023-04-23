@@ -20,6 +20,18 @@ export const SingleProductCartDiv = styled.div`
         font-weight: 700;
     }
 
+    @media (max-width: 1420px) {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 2rem 0 1rem 0;
+    }
+
+    @media (max-width: 910px) {
+        flex-direction: row;
+        gap: 0;
+        padding: 2rem 0;
+    }
+
     @media (max-width: 540px) {
         flex-direction: column;
         gap: 1rem;
@@ -65,6 +77,45 @@ export const ProductButtonsDiv = styled.div`
             }
         }
     }
+
+    @media (max-width: 1160px) {
+        gap: .5rem;
+
+        & > div {
+            flex-direction: column;
+            gap: .3rem;
+
+            & > button {
+                justify-content: center;
+            }
+        }
+    }
+
+    @media (max-width: 910px) {
+        gap: 0;
+
+        & > div {
+            flex-direction: row;
+            gap: .6rem;
+
+            & > button {
+                justify-content: center;
+            }
+        }
+    }
+
+    @media (max-width: 430px) {
+        gap: .5rem;
+
+        & > div {
+            flex-direction: column;
+            gap: .3rem;
+
+            & > button {
+                justify-content: center;
+            }
+        }
+    }
 `
 
 export const ProductQuantityDiv = styled.div`
@@ -92,5 +143,17 @@ export const ProductQuantityDiv = styled.div`
 
     p {
         user-select: none;
+    }
+
+    @media (max-width: 1160px) {
+        justify-content: space-evenly;
+    }
+
+    @media (max-width: 910px) {
+        justify-content: flex-start;
+    }
+
+    @media (max-width: 540px) {
+        justify-content: space-evenly;
     }
 `

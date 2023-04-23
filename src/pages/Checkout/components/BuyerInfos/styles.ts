@@ -55,6 +55,10 @@ const BaseFirstDiv = styled.div`
             }
         }
     }
+
+    @media (max-width: 332px) {
+        padding: 2rem 1rem;
+    }
 `
 
 export const FillInInfosContainer = styled(BaseFirstDiv)`
@@ -66,14 +70,9 @@ export const FillInInfosContainer = styled(BaseFirstDiv)`
     }
 
     & > div:last-child { //form {}
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-
-        & > div {
-            display: flex;
-            gap: .75rem;
-        }
+        display: grid;
+        grid-template-columns: 30% 3% 43% 15%;
+        gap: 1rem .75rem;
 
         input {
             background-color: ${props => props.theme.baseInput};
@@ -84,23 +83,73 @@ export const FillInInfosContainer = styled(BaseFirstDiv)`
         }
 
         input[title=cep] {
-            width: 12.5rem;
+            grid-column: 1 / 3;
+        }
+
+        input[title=rua] {
+            grid-row: 2;
+            grid-column: 1 / -1;
+        }
+
+        input[title=numero] {
+            grid-row: 3;
         }
 
         input[title=complemento] {
-            width: 75%;
+            grid-row: 3;
+            grid-column: 2 / -1;
+        }
+
+        input[title=bairro] {
+            grid-row: 4;
         }
 
         input[title=cidade] {
-            width: 65%;
+            grid-row: 4;
+            grid-column: 2 / 4;
         }
 
         input[title=uf] {
-            width: 3.75rem;
+            grid-row: 4;
+            grid-column: 4;
         }
+    }
 
-        button {
-            display: none;
+    @media (max-width: 535px) {
+        & > div:last-child {
+            grid-template-columns: 100%;
+
+            input[title=cep] {
+                grid-column: 1;
+            }
+
+            input[title=rua] {
+                grid-row: 2;
+                grid-column: 1;
+            }
+
+            input[title=numero] {
+                grid-row: 3;
+            }
+
+            input[title=complemento] {
+                grid-row: 4;
+                grid-column: 1;
+            }
+
+            input[title=bairro] {
+                grid-row: 5;
+            }
+
+            input[title=cidade] {
+                grid-row: 6;
+                grid-column: 1;
+            }
+
+            input[title=uf] {
+                grid-row: 7;
+                grid-column: 1;
+            }
         }
     }
 `
