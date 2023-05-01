@@ -2,14 +2,9 @@ import { useContext } from "react";
 import { SingleProductCart } from "./components/SingleProductCart";
 import { CartContainer, ConfirmButton, PricesDiv } from "./styles";
 import { ProductsContext } from "../../../../contexts/ProductsContext";
-import { useFormContext } from "react-hook-form";
+import { v4 as uuidv4 } from 'uuid'
 
-interface CartProps {
-    selectedPaymentMethod: number
-}
-
-export function Cart({ selectedPaymentMethod }: CartProps) {
-    const { handleSubmit } = useFormContext()
+export function Cart() {
 
     const { productsList, formatPrice } = useContext(ProductsContext)
 
@@ -26,8 +21,10 @@ export function Cart({ selectedPaymentMethod }: CartProps) {
             <div>
                 {productsList.map(product => {
                     if (product.cartInfo.isInCart) {
+                        const cont = uuidv4()
                         return (
                             <SingleProductCart 
+                                key={cont}
                                 id={product.id}
                                 name={product.name}
                                 image={product.image}
@@ -39,7 +36,6 @@ export function Cart({ selectedPaymentMethod }: CartProps) {
                         )
                     }
                 })}
-                {/* <SingleProductCart /> */}
                 <PricesDiv>
                     <div>
                         <p>Total de itens</p>

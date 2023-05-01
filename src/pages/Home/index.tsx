@@ -8,7 +8,7 @@ import { ProductsContext } from "../../contexts/ProductsContext";
 
 export function Home() {
     const { productsList } = useContext(ProductsContext)
-
+    
     return (
         <>
         <Section1>
@@ -42,8 +42,10 @@ export function Home() {
             <h2>Nossos Cafés</h2>
             <div>
                 {productsList.map(product => {
+                    const cont = uuidv4()
                     return (
                         <SingleProduct 
+                            key={cont}
                             id={product.id}
                             name={product.name}
                             image={product.image}

@@ -5,7 +5,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import * as zod from 'zod'
 import { Cart } from "./components/Cart";
 import { useContext, useState } from "react";
-import { /* PaymentFormData, PaymentFormValidationSchema, */ ProductsContext } from "../../contexts/ProductsContext";
+import { ProductsContext } from "../../contexts/ProductsContext";
 
 const PaymentFormValidationSchema = zod.object({ //É um objeto pq ele retorna um objeto
     cep: zod.string().min(1, 'Digite um CEP válido'),
@@ -20,7 +20,7 @@ const PaymentFormValidationSchema = zod.object({ //É um objeto pq ele retorna u
 export type PaymentFormData = zod.infer<typeof PaymentFormValidationSchema> //FormContext só funciona com a tipagem
 
 export function Checkout() {
-    /* const { selectedPaymentMethod, confirmPayment, paymentForm } = useContext(ProductsContext) */
+    const { productsList} = useContext(ProductsContext)
 
     const paymentForm = useForm<PaymentFormData>({ //objeto de configurações
         resolver: zodResolver(PaymentFormValidationSchema), 
@@ -53,14 +53,29 @@ export function Checkout() {
         return selectedPaymentMethod
     }
 
-    
-
-    /* const { register, handleSubmit } = paymentForm */
-
     function handleConfirmPayment(data: PaymentFormData) {
-        //console.log(PaymentFormValidationSchema.safeParse({...data}))
-        if (selectedPaymentMethod != 0 && PaymentFormValidationSchema.safeParse({...data})) {
-            /* confirmPayment(data) */
+        let isThereInCart 
+        productsList.forEach(product => {
+            if (product.cartInfo.isInCart == true) {
+                isThereInCart = true
+            }
+        })
+        
+        let dataFromForm = PaymentFormValidationSchema.safeParse({...data})
+        if (selectedPaymentMethod != 0 && dataFromForm && isThereInCart) {
+            let selectedPaymentMethodName
+            if (selectedPaymentMethod == 1) {
+                selectedPaymentMethodName = 'Cartão de Crédito'
+            } 
+            else if (selectedPaymentMethod == 2) {
+                selectedPaymentMethodName = 'Cartão de Débito'
+            } else {
+                selectedPaymentMethodName = 'Dinheiro'
+            }
+
+            const arrayToLocalStorage = JSON.stringify(dataFromForm)
+            localStorage.setItem('@coffee-delivery:buyer-infos-1.0.0', arrayToLocalStorage)
+            localStorage.setItem('@coffee-delivery:payment-method-1.0.0', selectedPaymentMethodName)
             window.location.href = '/success' 
         }
     }

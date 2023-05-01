@@ -9,6 +9,15 @@ export function Success() {
     let cidade = 'Niterói'
     let uf = 'RJ'
 
+    const localStorageToArray = localStorage.getItem('@coffee-delivery:buyer-infos-1.0.0')
+    let convertedArray
+    if (localStorageToArray) {
+        convertedArray = JSON.parse(localStorageToArray)
+    }
+
+    const paymentMethod = localStorage.getItem('@coffee-delivery:payment-method-1.0.0')
+    
+
 
     return (
         <SuccessContainer>
@@ -21,8 +30,8 @@ export function Success() {
                     <div>
                         <MapPin id="map" size={32} weight="fill"/>
                         <div>
-                            <p>Entrega em <span>{rua}, {numero}</span></p>
-                            <p>{bairro} - {cidade}, {uf}</p>
+                            <p>Entrega em <span>{convertedArray.data.rua}, {convertedArray.data.numero}</span></p>
+                            <p>{convertedArray.data.bairro} - {convertedArray.data.cidade}, {convertedArray.data.uf}</p>
                         </div>
                     </div>
                     <div>
@@ -36,7 +45,7 @@ export function Success() {
                         <CurrencyDollar id='money' size={32} weight="fill"/>
                         <div>
                             <p>Pagamento na entrega</p>
-                            <span>Cartão de Crédito</span>
+                            <span>{paymentMethod}</span>
                         </div>
                     </div>
                 </DeliveryInfosContainer>

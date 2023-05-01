@@ -19,8 +19,6 @@ interface SelectedPaymentMethodProps {
 export function BuyerInfos({ selectedPaymentMethod, handleSelectPaymentMethod }: BuyerInfosProps) {
     const { register } = useFormContext()
 
-    /* const { selectedPaymentMethod, handleSelectPaymentMethod } = useContext(ProductsContext) */
-
     return (
         <BuyerInfosContainer>
             <p>Complete seu pedido</p>

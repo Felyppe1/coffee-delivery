@@ -26,7 +26,7 @@ export function SingleProduct({ id, name, image, tags, description, price, isInC
             <div>
                 {tags.map(tag => {
                     return (
-                        <p>{tag}</p>
+                        <p key={id}>{tag}</p>
                     )
                 })}
             </div>
