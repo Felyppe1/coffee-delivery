@@ -84,7 +84,7 @@ export function Checkout() {
         <CheckoutContainer onSubmit={handleSubmit(handleConfirmPayment)}>
             <FormProvider {...paymentForm}>
                 <BuyerInfos selectedPaymentMethod={selectedPaymentMethod} handleSelectPaymentMethod={handleSelectPaymentMethod}/>
-                <Cart selectedPaymentMethod={selectedPaymentMethod} />
+                <Cart /* selectedPaymentMethod={selectedPaymentMethod} */ />
             </FormProvider>
         </CheckoutContainer>
     )
