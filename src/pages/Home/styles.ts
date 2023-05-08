@@ -29,7 +29,7 @@ export const Section1 = styled.section`
         }
     }
 
-    @media (max-width: 400px) {
+    @media (max-width: 460px) {
         padding: 0 0 4rem 0;
     }
 `

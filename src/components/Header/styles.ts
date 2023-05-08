@@ -16,7 +16,7 @@ export const HeaderContainer = styled.header`
 
     
 
-    @media (max-width: 350px) {
+    @media (max-width: 460px) {
         nav {
             flex-direction: column;
             align-items: center;
