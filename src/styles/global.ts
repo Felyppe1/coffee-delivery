@@ -12,6 +12,7 @@ export const GlobalStyles = createGlobalStyle`
         background-color: ${props => props.theme.background};
         padding: 0 10.3% 8rem 10.3%;
         max-width: 1700px;
+        margin: 0 auto;
     }
 
     body, input, textarea, button {
