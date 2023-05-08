@@ -5,6 +5,17 @@ import { ShoppingCart, MapPin } from 'phosphor-react'
 import { useContext, useState } from "react";
 import { ProductsContext } from "../../contexts/ProductsContext";
 
+interface detailsProps {
+    country_code: string
+    country_name: string
+    city: string 
+    postal: string
+    latitude: string
+    longitude: string
+    IP: string
+    state: string
+}
+
 export function Header() {
     const { productsList } = useContext(ProductsContext)
 
@@ -15,22 +26,19 @@ export function Header() {
         }
     })
 
-    let teste
+    const [ details, setDetails ] = useState<detailsProps>()
 
-    const [ details, setDetails ] = useState(null)
-
-        fetch("https://geolocation-db.com/json/1a3d6220-e74a-11ed-b796-7df82bd65231")
-            .then( response => response.json() )
-                .then( data => {
-                    console.log(data)
-                    setDetails(data)
-                })
-                .catch( error => {
-                    console.log(error)
-                })
+    fetch("https://geolocation-db.com/json/1a3d6220-e74a-11ed-b796-7df82bd65231")
+        .then( response => response.json() )
+            .then( data => {
+                setDetails(data)
+            })
             .catch( error => {
                 console.log(error)
             })
+        .catch( error => {
+            console.log(error)
+        })
 
     return (
         <HeaderContainer>
@@ -41,7 +49,7 @@ export function Header() {
                 <RightNavDiv>
                     <div>
                         <MapPin size={22} weight="fill" />
-                        
+
                         { details ? ( <p>{details.city}, {details.state}</p> ) : ('')}
                     </div>
                     <NavLink to='/checkout' title='Checkout'>
