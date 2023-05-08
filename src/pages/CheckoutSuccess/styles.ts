@@ -19,13 +19,43 @@ export const SuccessContainer = styled.div`
     }
 
     & > div:last-child {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 2rem;
+        display: flex;
+        justify-content: space-between;
         align-items: center;
+        gap: 2rem;
 
         img {
-            width: 75%;
+            width: 45%;
+            max-width: 492px;
+        }
+    }
+
+    @media (max-width: 860px) {
+        gap: 2rem;
+
+        & > div:last-child {
+            flex-direction: column-reverse;
+            align-items: flex-start;
+
+            img {
+                width: 17.25rem;
+            }
+        }
+    }
+
+    @media (max-width: 443.5px) {
+        & > div:first-child {
+            h1 {
+                line-height: 110%;
+            }
+        }
+    }
+
+    @media (max-width: 350px) {
+        & > div:last-child {
+            img {
+                width: 100%;
+            }
         }
     }
 `
@@ -36,6 +66,9 @@ export const DeliveryInfosContainer = styled.div`
     border-radius: .375rem 2.5rem;
     display: grid;
     gap: 2rem;
+    width: 32.875rem;
+    max-width: 32.875rem;
+    min-height: 16.875rem;
 
     & > div {
         display: flex;
@@ -70,5 +103,13 @@ export const DeliveryInfosContainer = styled.div`
                 font-weight: 800;
             }
         }
+    }
+
+    @media (max-width: 860px) {
+        width: 100%;
+    }
+
+    @media (max-width: 350px) {
+        padding: 1.3rem;
     }
 `

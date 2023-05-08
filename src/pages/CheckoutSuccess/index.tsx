@@ -3,12 +3,6 @@ import { MapPin, Timer, CurrencyDollar } from 'phosphor-react'
 import CheckoutImg from '../../assets/checkout-success-img.svg'
 
 export function Success() {
-    let rua = 'Deputado José Luiz Ertal'
-    let numero = '20'
-    let bairro = 'Cafubá'
-    let cidade = 'Niterói'
-    let uf = 'RJ'
-
     const localStorageToArray = localStorage.getItem('@coffee-delivery:buyer-infos-1.0.0')
     let convertedArray
     if (localStorageToArray) {
