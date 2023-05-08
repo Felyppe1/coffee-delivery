@@ -2,7 +2,7 @@ import { HeaderContainer, RightNavDiv } from "./styles";
 import Logo from "../../assets/logo.svg"
 import { NavLink } from 'react-router-dom'
 import { ShoppingCart, MapPin } from 'phosphor-react'
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ProductsContext } from "../../contexts/ProductsContext";
 
 export function Header() {
@@ -15,6 +15,23 @@ export function Header() {
         }
     })
 
+    let teste
+
+    const [ details, setDetails ] = useState(null)
+
+        fetch("https://geolocation-db.com/json/1a3d6220-e74a-11ed-b796-7df82bd65231")
+            .then( response => response.json() )
+                .then( data => {
+                    console.log(data)
+                    setDetails(data)
+                })
+                .catch( error => {
+                    console.log(error)
+                })
+            .catch( error => {
+                console.log(error)
+            })
+
     return (
         <HeaderContainer>
             <nav>
@@ -24,7 +41,8 @@ export function Header() {
                 <RightNavDiv>
                     <div>
                         <MapPin size={22} weight="fill" />
-                        <p>Rio de Janeiro, RJ</p>
+                        
+                        { details ? ( <p>{details.city}, {details.state}</p> ) : ('')}
                     </div>
                     <NavLink to='/checkout' title='Checkout'>
                         <div>
