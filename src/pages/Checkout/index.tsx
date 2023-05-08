@@ -6,6 +6,7 @@ import * as zod from 'zod'
 import { Cart } from "./components/Cart";
 import { useContext, useState } from "react";
 import { ProductsContext } from "../../contexts/ProductsContext";
+import { useNavigate } from "react-router-dom";
 
 const PaymentFormValidationSchema = zod.object({ //É um objeto pq ele retorna um objeto
     cep: zod.string().min(1, 'Digite um CEP válido'),
@@ -53,6 +54,8 @@ export function Checkout() {
         return selectedPaymentMethod
     }
 
+    const navigate = useNavigate()
+
     function handleConfirmPayment(data: PaymentFormData) {
         let isThereInCart 
         productsList.forEach(product => {
@@ -76,7 +79,7 @@ export function Checkout() {
             const arrayToLocalStorage = JSON.stringify(dataFromForm)
             localStorage.setItem('@coffee-delivery:buyer-infos-1.0.0', arrayToLocalStorage)
             localStorage.setItem('@coffee-delivery:payment-method-1.0.0', selectedPaymentMethodName)
-            window.location.href = '/success' 
+            navigate('/success')
         }
     }
 
