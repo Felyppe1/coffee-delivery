@@ -2,7 +2,6 @@ import { Section1, Section1Container1, Section1Container2, Section2 } from "./st
 import Section1Img from "../../assets/main-first-session-img.svg"
 import { ShoppingCart, Package, Timer, Coffee } from 'phosphor-react'
 import { SingleProduct } from "./components/SingleProduct";
-import {v4 as uuidv4} from 'uuid'
 import { useContext } from 'react'
 import { ProductsContext } from "../../contexts/ProductsContext";
 
@@ -42,10 +41,8 @@ export function Home() {
             <h2>Nossos Cafés</h2>
             <div>
                 {productsList.map(product => {
-                    const cont = uuidv4()
                     return (
                         <SingleProduct 
-                            key={cont}
                             id={product.id}
                             name={product.name}
                             image={product.image}

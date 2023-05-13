@@ -77,8 +77,8 @@ export function Checkout() {
             }
 
             const arrayToLocalStorage = JSON.stringify(dataFromForm)
-            localStorage.setItem('@coffee-delivery:buyer-infos-1.0.0', arrayToLocalStorage)
-            localStorage.setItem('@coffee-delivery:payment-method-1.0.0', selectedPaymentMethodName)
+            sessionStorage.setItem('@coffee-delivery:buyer-infos-1.0.0', arrayToLocalStorage)
+            sessionStorage.setItem('@coffee-delivery:payment-method-1.0.0', selectedPaymentMethodName)
 
             productsList.filter(product => {
                 if (product.cartInfo.isInCart) {

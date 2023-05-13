@@ -41,10 +41,6 @@ interface ProductsContextProps {
     increaseQuantityCart: (id: string) => void
     decreaseQuantityCart: (id: string) => void
     deleteCartProduct: (id: string) => void
-    /* confirmPayment: (data: PaymentFormData) => void
-    selectedPaymentMethod: number
-    handleSelectPaymentMethod: (id: number) => void
-    paymentForm: object */
 }
 export const ProductsContext = createContext({} as ProductsContextProps)
 
@@ -339,44 +335,6 @@ export function ProductsContextProvider({ children }: ProductsContextProviderPro
         setProductsList(productsListModified)
     }
 
-    /* //DO FORMULÁRIO
-    const paymentForm = useForm<PaymentFormData>({ //objeto de configurações
-        resolver: zodResolver(PaymentFormValidationSchema), 
-        defaultValues: {
-            cep: '',
-            rua: '',
-            numero: '',
-            complemento: '',
-            bairro: '',
-            cidade: '',
-            uf: ''
-        }
-    })
-
-    const { register, handleSubmit } = paymentForm
-
-    const [ selectedPaymentMethod, setSelectedPaymentMethod ] = useState(0) //useState retorna uma ARRAYYYYYYYYYYYY
-
-    function handleSelectPaymentMethod(id: number) {
-        setSelectedPaymentMethod(state => {
-            if (state == id) {
-                return 0
-            }
-            else {
-                return id
-            }
-        })
-    }
-
-    function confirmPayment(data: PaymentFormData) {
-        console.log('teste')
-    } */
-    
-
-    
-
-    
-
     return (
         <ProductsContext.Provider 
             value={{ 
@@ -387,11 +345,7 @@ export function ProductsContextProvider({ children }: ProductsContextProviderPro
                 decreaseQuantityHome,
                 increaseQuantityCart,
                 decreaseQuantityCart,
-                deleteCartProduct/* ,
-                confirmPayment,
-                handleSelectPaymentMethod,
-                selectedPaymentMethod,
-                paymentForm */
+                deleteCartProduct
             }}
         >
             {children}

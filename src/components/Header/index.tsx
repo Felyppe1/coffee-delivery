@@ -2,10 +2,10 @@ import { HeaderContainer, RightNavDiv } from "./styles";
 import Logo from "../../assets/logo.svg"
 import { NavLink } from 'react-router-dom'
 import { ShoppingCart, MapPin } from 'phosphor-react'
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ProductsContext } from "../../contexts/ProductsContext";
 
-interface detailsProps {
+interface DetailsProps {
     country_code: string
     country_name: string
     city: string 
@@ -26,19 +26,21 @@ export function Header() {
         }
     })
 
-    const [ details, setDetails ] = useState<detailsProps>()
+    const [ details, setDetails ] = useState<DetailsProps>()
 
-    fetch("https://geolocation-db.com/json/1a3d6220-e74a-11ed-b796-7df82bd65231")
-        .then( response => response.json() )
-            .then( data => {
-                setDetails(data)
-            })
+    useEffect(() => {
+        fetch("https://geolocation-db.com/json/1a3d6220-e74a-11ed-b796-7df82bd65231")
+            .then( response => response.json() )
+                .then( data => {
+                    setDetails(data)
+                })
+                .catch( error => {
+                    console.log(error)
+                })
             .catch( error => {
                 console.log(error)
-            })
-        .catch( error => {
-            console.log(error)
         })
+    }, [])
 
     return (
         <HeaderContainer>

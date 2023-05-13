@@ -3,13 +3,13 @@ import { MapPin, Timer, CurrencyDollar } from 'phosphor-react'
 import CheckoutImg from '../../assets/checkout-success-img.svg'
 
 export function Success() {
-    const localStorageToArray = localStorage.getItem('@coffee-delivery:buyer-infos-1.0.0')
+    const sessionStorageToArray = sessionStorage.getItem('@coffee-delivery:buyer-infos-1.0.0')
     let convertedArray
-    if (localStorageToArray) {
-        convertedArray = JSON.parse(localStorageToArray)
+    if (sessionStorageToArray) {
+        convertedArray = JSON.parse(sessionStorageToArray)
     }
 
-    const paymentMethod = localStorage.getItem('@coffee-delivery:payment-method-1.0.0')
+    const paymentMethod = sessionStorage.getItem('@coffee-delivery:payment-method-1.0.0')
     
 
 
