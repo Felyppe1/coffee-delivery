@@ -43,11 +43,11 @@ export function Cart() {
                     </div>
                     <div>
                         <p>Entrega</p>
-                        <p>R$ 3,50</p>
+                        <p>R$ 5,00</p>
                     </div>
                     <div>
                         <p>Total</p>
-                        <p>R$ {formatPrice(allProductsValue + 3.5)}</p>
+                        <p>R$ {formatPrice(allProductsValue + 5)}</p>
                     </div>
                 </PricesDiv>
                 <ConfirmButton type="submit">CONFIRMAR PEDIDO</ConfirmButton>

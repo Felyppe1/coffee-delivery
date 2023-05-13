@@ -12,7 +12,7 @@ const PaymentFormValidationSchema = zod.object({ //É um objeto pq ele retorna u
     cep: zod.string().min(1, 'Digite um CEP válido'),
     rua: zod.string().min(1),
     numero: zod.string().min(1),
-    complemento: zod.string().min(1),
+    complemento: zod.string().optional(),
     bairro: zod.string().min(1),
     cidade: zod.string().min(1),
     uf: zod.string().length(2)
@@ -79,6 +79,13 @@ export function Checkout() {
             const arrayToLocalStorage = JSON.stringify(dataFromForm)
             localStorage.setItem('@coffee-delivery:buyer-infos-1.0.0', arrayToLocalStorage)
             localStorage.setItem('@coffee-delivery:payment-method-1.0.0', selectedPaymentMethodName)
+
+            productsList.filter(product => {
+                if (product.cartInfo.isInCart) {
+                    product.cartInfo.isInCart = false
+                }
+            })
+
             navigate('/success')
         }
     }
